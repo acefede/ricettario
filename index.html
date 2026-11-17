@@ -9,52 +9,166 @@
   <meta name="apple-mobile-web-app-title" content="Il ricettario di Fede e Vio">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Il ricettario di Fede e Vio">
+  <meta name="description" content="Il ricettario di Fede e Vio: i nostri dolci, le ricette e i ricordi di casa.">
+  <meta property="og:title" content="Il ricettario di Fede e Vio">
+  <meta property="og:description" content="I nostri dolci, le ricette e i ricordi di casa.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/acefede/ricettario/main/apple-touch-icon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/acefede/ricettario/main/apple-touch-icon.png">
 
   <title>Il ricettario di Fede e Vio</title>
-  <link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/acefede/ricettario/250d472eadb4b05f2a31a2303d9b5844ff11e578/favicon-64.png">
-  <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/acefede/ricettario/250d472eadb4b05f2a31a2303d9b5844ff11e578/apple-touch-icon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/acefede/ricettario/250d472eadb4b05f2a31a2303d9b5844ff11e578/apple-touch-icon.png">
-  <link rel="manifest" href="./manifest.webmanifest">
 
-  <meta name="description" content="Il ricettario di Fede e Vio: i nostri dolci, le ricette e i ricordi di casa.">
+  <!-- Immagini ufficiali del ricettario: caricate dal ramo main del repository. -->
+  <link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/acefede/ricettario/main/favicon-64.png">
+  <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/acefede/ricettario/main/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/acefede/ricettario/main/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <style>
     * { box-sizing: border-box; }
     html, body {
-      -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
-      margin: 0; width: 100%; height: 100%; min-height: 100%; overflow: hidden;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      overflow: hidden;
     }
     @supports (height: 100dvh) { html, body { height: 100dvh; } }
     @supports (height: 100svh) { html, body { min-height: 100svh; } }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      background: #f4f0e7; color: #3f4650;
+      background: #f4f0e7;
+      color: #3f4650;
     }
+
     #status {
-      position: fixed; inset: 0; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 13px; padding: 28px;
-      text-align: center; font-size: 16px; line-height: 1.45;
-      overflow-wrap: anywhere; background: linear-gradient(145deg, #fbf8f0, #e9eff4);
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 28px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+      background: linear-gradient(145deg, #fbf8f0, #e9eff4);
       z-index: 2;
     }
     #status .mark {
-      width: 82px; height: 82px; border-radius: 22px; object-fit: cover;
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      object-fit: contain;
+      background: #fffdf8;
       box-shadow: 0 8px 24px rgba(41, 78, 112, .18);
     }
-    #status strong { color: #294e70; font-family: Georgia, serif; font-size: 21px; }
-    #status .detail { color: #687887; font-size: 13px; max-width: 360px; }
+    #status strong {
+      color: #294e70;
+      font-family: Georgia, serif;
+      font-size: 21px;
+    }
+    #status .detail {
+      color: #687887;
+      font-size: 13px;
+      max-width: 360px;
+    }
+
+    #setup {
+      display: none;
+      width: min(100%, 390px);
+      margin-top: 8px;
+      padding: 18px;
+      border: 1px solid #b7ccda;
+      border-radius: 16px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 8px 24px rgba(41,78,112,.09);
+      text-align: left;
+    }
+    #setup label {
+      display: block;
+      margin-bottom: 7px;
+      color: #294e70;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    #deployment-input {
+      width: 100%;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #99b9cd;
+      border-radius: 9px;
+      background: #fff;
+      color: #294e70;
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    #deployment-input:focus {
+      border-color: #4a7c9b;
+      box-shadow: 0 0 0 3px rgba(74,124,155,.13);
+    }
+    #open-app {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 9px;
+      background: #4a7c9b;
+      color: #fff;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    #open-app:active { transform: translateY(1px); }
+    #setup-error {
+      min-height: 18px;
+      margin-top: 8px;
+      color: #a2523b;
+      font-size: 12px;
+    }
     #app-frame {
-      position: fixed; inset: 0; width: 100%; height: 100%; height: 100svh; height: 100dvh;
-      border: 0; display: none; background: #f4f0e7; margin: 0; z-index: 1;
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      height: 100svh;
+      height: 100dvh;
+      border: 0;
+      display: none;
+      background: #f4f0e7;
+      margin: 0;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
   <main id="status" role="status" aria-live="polite">
-    <img class="mark" src="https://raw.githubusercontent.com/acefede/ricettario/250d472eadb4b05f2a31a2303d9b5844ff11e578/apple-touch-icon.png" alt="">
+    <img
+      class="mark"
+      src="https://raw.githubusercontent.com/acefede/ricettario/main/apple-touch-icon.png"
+      alt="Logo Il ricettario di Fede e Vio"
+      onerror="this.style.display='none'">
     <strong>Il ricettario di Fede e Vio</strong>
     <span id="status-message">Preparazione del ricettario...</span>
     <span class="detail" id="status-detail"></span>
+
+    <form id="setup" novalidate>
+      <label for="deployment-input">Collegamento o ID della Web App Apps Script</label>
+      <input
+        id="deployment-input"
+        type="text"
+        inputmode="url"
+        autocomplete="url"
+        placeholder="Incolla l'ID oppure l'indirizzo che termina con /exec">
+      <button id="open-app" type="submit">Apri il ricettario</button>
+      <div id="setup-error" role="alert"></div>
+    </form>
   </main>
 
   <iframe id="app-frame" title="Il ricettario di Fede e Vio" allow="clipboard-write"></iframe>
@@ -62,66 +176,106 @@
   <script>
     (() => {
       "use strict";
+
+      const STORAGE_KEY = "fede-vio-ricettario-deployment";
       const status = document.getElementById("status");
       const message = document.getElementById("status-message");
       const detail = document.getElementById("status-detail");
+      const setup = document.getElementById("setup");
+      const input = document.getElementById("deployment-input");
+      const setupError = document.getElementById("setup-error");
       const frame = document.getElementById("app-frame");
+      let loadTimeout = null;
+      let loaded = false;
 
-      const showError = (text, extra = "") => {
+      function showSetup(text, extra) {
         message.textContent = text;
-        detail.textContent = extra;
+        detail.textContent = extra || "";
+        setup.style.display = "block";
         status.style.display = "flex";
         frame.style.display = "none";
-      };
-
-      let value;
-      try {
-        value = decodeURIComponent(window.location.hash.slice(1)).trim();
-      } catch (_) {
-        showError("Il collegamento non è valido.", "Controlla l'indirizzo GitHub Pages.");
-        return;
       }
 
-      if (!value) {
-        showError(
-          "Manca il collegamento alla Web App.",
-          "Apri GitHub Pages aggiungendo # seguito dall'ID del deployment Apps Script."
-        );
-        return;
+      function normalizeDeployment(value) {
+        const clean = String(value || "").trim();
+        if (!clean) return "";
+
+        const fullUrlPattern = /^https:\/\/script\.google\.com\/macros\/s\/([A-Za-z0-9_-]+)\/exec\/?$/;
+        const match = clean.match(fullUrlPattern);
+        if (match) return "https://script.google.com/macros/s/" + match[1] + "/exec";
+
+        if (/^[A-Za-z0-9_-]+$/.test(clean)) {
+          return "https://script.google.com/macros/s/" + clean + "/exec";
+        }
+        return "";
       }
 
-      const fullUrlPattern = /^https:\/\/script\.google\.com\/macros\/s\/([A-Za-z0-9_-]+)\/exec\/?$/;
-      const fullMatch = value.match(fullUrlPattern);
-      let appUrl;
-      if (fullMatch) {
-        appUrl = "https://script.google.com/macros/s/" + fullMatch[1] + "/exec";
-      } else if (/^[A-Za-z0-9_-]+$/.test(value)) {
-        appUrl = "https://script.google.com/macros/s/" + value + "/exec";
-      } else {
-        showError(
-          "ID o indirizzo non valido.",
-          "Inserisci l'ID del deployment oppure l'indirizzo completo che termina in /exec."
-        );
-        return;
-      }
+      function openApp(value, remember) {
+        const appUrl = normalizeDeployment(value);
+        if (!appUrl) {
+          setupError.textContent = "Inserisci un ID valido o l'indirizzo completo della Web App (/exec).";
+          return;
+        }
 
-      message.textContent = "Apertura del ricettario...";
-      detail.textContent = "Connessione a Google Apps Script";
-      let loaded = false;
-      const timeout = window.setTimeout(() => {
-        if (!loaded) showError(
-          "Il ricettario sta impiegando troppo tempo ad aprirsi.",
-          "Controlla la connessione e verifica che la Web App sia ancora distribuita."
-        );
-      }, 25000);
+        setupError.textContent = "";
+        if (remember) {
+          try { localStorage.setItem(STORAGE_KEY, appUrl); } catch (_) {}
+        }
+
+        setup.style.display = "none";
+        message.textContent = "Apertura del ricettario...";
+        detail.textContent = "Connessione a Google Apps Script";
+        status.style.display = "flex";
+        frame.style.display = "none";
+        loaded = false;
+
+        if (loadTimeout) window.clearTimeout(loadTimeout);
+        loadTimeout = window.setTimeout(() => {
+          if (!loaded) {
+            showSetup(
+              "Il ricettario sta impiegando troppo tempo ad aprirsi.",
+              "Controlla la connessione e verifica che la Web App sia distribuita e accessibile."
+            );
+            input.value = value;
+          }
+        }, 25000);
+
+        frame.src = appUrl;
+      }
 
       frame.addEventListener("load", () => {
         loaded = true;
-        window.clearTimeout(timeout);
+        if (loadTimeout) window.clearTimeout(loadTimeout);
         status.style.display = "none";
         frame.style.display = "block";
       });
-      frame.src = appUrl;
+
+      setup.addEventListener("submit", (event) => {
+        event.preventDefault();
+        openApp(input.value, true);
+      });
+
+      let hashValue = "";
+      try {
+        hashValue = decodeURIComponent(window.location.hash.slice(1)).trim();
+      } catch (_) {
+        showSetup("Il collegamento non è valido.", "Puoi inserire nuovamente l'ID della Web App qui sotto.");
+        return;
+      }
+
+      const queryValue = new URLSearchParams(window.location.search).get("id") || "";
+      let savedValue = "";
+      try { savedValue = localStorage.getItem(STORAGE_KEY) || ""; } catch (_) {}
+
+      const initialValue = hashValue || queryValue || savedValue;
+      if (initialValue) {
+        openApp(initialValue, true);
+      } else {
+        showSetup(
+          "Benvenuto nel ricettario!",
+          "Inserisci una volta l'ID del deployment Apps Script. Lo ricorderemo su questo dispositivo."
+        );
+      }
     })();
   </script>
 </body>
